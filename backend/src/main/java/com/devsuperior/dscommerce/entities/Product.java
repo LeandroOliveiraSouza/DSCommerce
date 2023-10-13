@@ -90,4 +90,17 @@ public class Product {
     public List<Order> getOrders() {
         return orderItems.stream().map(OrderItem::getOrder).toList();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Product product)) return false;
+
+        return getId() != null ? getId().equals(product.getId()) : product.getId() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return getId() != null ? getId().hashCode() : 0;
+    }
 }
