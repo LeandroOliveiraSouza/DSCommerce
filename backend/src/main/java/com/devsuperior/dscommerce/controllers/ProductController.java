@@ -1,6 +1,7 @@
 package com.devsuperior.dscommerce.controllers;
 
 import com.devsuperior.dscommerce.dto.ProductDTO;
+import com.devsuperior.dscommerce.dto.ProductMinDTO;
 import com.devsuperior.dscommerce.services.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,10 @@ public class ProductController {
     }
 
     @GetMapping
-    public ResponseEntity<Page<ProductDTO>> searchByName(
+    public ResponseEntity<Page<ProductMinDTO>> searchByName(
             @RequestParam(name = "name", defaultValue = "") String name,
             Pageable pageable) throws Exception {
-        Page<ProductDTO> dto = service.searchByName(name, pageable);
+        Page<ProductMinDTO> dto = service.searchByName(name, pageable);
         return ResponseEntity.ok(dto);
     }
 
